@@ -5,9 +5,7 @@ require 'webrick/https'
 require 'openssl'
 require 'rack'
 require 'rack/request'
-require 'rack-ssl'
 
-use Rack::SSL
 
 class MyServer  < Sinatra::Base
     get '/' do
@@ -18,7 +16,7 @@ end
 CERT_PATH = '/System/Library/OpenSSL/certs/'
 
 webrick_options = {
-        :Port               => 80,
+        :Port               => 443,
         :Logger             => WEBrick::Log::new($stderr, WEBrick::Log::DEBUG),
         :DocumentRoot       => "/ruby/htdocs",
         :SSLEnable          => true,
